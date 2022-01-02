@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<meta name='apple-mobile-web-app-capable' content='yes' />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv='Content-Type' content='textml;charset=UTF-8' />
+<title>移动端</title>
+<style>
+*{
+padding: 0;
+margin: 0;
+}
+#slideshow{
+width: 900px;
+height: 1600px;
+margin: 200px auto;
+overflow: hidden;
+position: relative;
+
+}
+#slideshow img{
+width: 900px;
+
+position: absolute; 
+top: 0;
+left: 0;
+opacity: 0; 
+transition: opacity 1s linear; 
+}
+#slideshow img.active{
+opacity: 1; 
+}
+</style>
+</head>
+<body>
+<div id="slideshow">
+<!-- 插入轮播的图片们 -->
+<img class="active" src="img/945950.jpg" />
+<img src="img/lol.jpg" />
+<img src="img/lol.jpg" />
+<img src="img/lol.jpg" />
+<img src="img/Bon jovi.jpg" />
+<img src="img/business_ojigi_man.png" />
+<img src="img/gameorange.jpg" />
+<img src="img/maplestory.jpg" />
+<img src="img/mpsr2.jpg" />
+<img src="img/riot.png" />
+</div>
+<script>
+//---------主角：轮播图函数-------------
+function slideshow() {
+var slideshow=document.getElementById("slideshow"),
+imgs=slideshow.getElementsByTagName("img"), //得到图片们
+current=0; //current为当前活跃的图片编号
+function slideOff() {
+imgs[current].className=""; //图片淡出
+}
+function slideOn() {
+imgs[current].className="active"; //图片淡入
+}
+function changeSlide() { //切换图片的函数
+slideOff();
+current++; //自增1
+if(current>=imgs.length) current=0;
+slideOn();
+}
+
+var slideon=setInterval(changeSlide,3000);
+}
+slideshow();
+</script>
+</body>
+</html>
